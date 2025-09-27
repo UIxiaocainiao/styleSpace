@@ -12,8 +12,8 @@ git clone git@github.com:UIxiaocainiao/resume.git
 
 - 当你修改了动东西之后
 ```
-git status
-git add .
-git commit -m "change somethings"
-git push origin main
+git status # 查看仓库中的文件追踪信息
+git add . # 将当前目录下的所有文件都使用 git 进行追踪
+git commit -m "change somethings" # 在 git 版本管理中添加关于本次修改的信息
+git push origin main # 推送到远端git仓库的 main 分支
 ```
