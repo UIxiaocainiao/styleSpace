@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import CardNav from '@/components/CardNav' 
-import logo from '@/SVG/logo.svg';
+// import CardNav from '@/components/CardNav' 
+// import logo from '@/SVG/logo.svg';
+import BubbleMenu from '@/components/BubbleMenu'
+import TextType from '@/components/TextType';
 // const navLinks = [
 //   { to: '/', label: '首页' },
 //   { to: '/photography', label: '摄影' },
@@ -102,45 +104,48 @@ import logo from '@/SVG/logo.svg';
 const Navbar = () => {
   const items = [
     {
+      label: "Home",
+      href: "/",
+      ariaLabel: "首页",
+      rotation: -8,
+      hoverStyles: { bgColor: "#141414", textColor: "#ffffff" }
+    },
+    {
+      label: "photography",
+      href: "/photography",
+      ariaLabel: "Projects",
+      rotation: 8,
+      hoverStyles: { bgColor: "#141414", textColor: "#ffffff" }
+    },
+    {
       label: "About",
-      bgColor: "#0D0716",
-      textColor: "#fff",
-      links: [
-        { label: "Company", href: "/about", ariaLabel: "About Company" },
-        { label: "Careers", href: "/careers", ariaLabel: "About Careers" }
-      ]
+      href: "/about",
+      ariaLabel: "About",
+      rotation: -8,
+      hoverStyles: { bgColor: "#141414", textColor: "#ffffff" }
     },
-    {
-      label: "Projects", 
-      bgColor: "#170D27",
-      textColor: "#fff",
-      links: [
-        { label: "Featured", href: "/photography", ariaLabel: "Featured Projects" },
-        { label: "Case Studies", href: "/projects", ariaLabel: "Project Case Studies" }
-      ]
-    },
-    {
-      label: "Contact",
-      bgColor: "#271E37", 
-      textColor: "#fff",
-      links: [
-        { label: "Email", href: "mailto:contact@example.com", ariaLabel: "Email us" },
-        { label: "Twitter", href: "https://twitter.com", ariaLabel: "Twitter" },
-        { label: "LinkedIn", href: "https://linkedin.com", ariaLabel: "LinkedIn" }
-      ]
-    }
   ];
 
   return (
-    <CardNav
-      logo={logo}
-      logoAlt="Company Logo"
+    <BubbleMenu
+      logo={<a href="/" style={{ fontWeight: 700, color: '#000000' }}>
+      <TextType 
+      text={["Mr.peng！", "Welcome!", "Hello!"]}
+      typingSpeed={75}
+      pauseDuration={1500}
+      showCursor={true}
+      cursorCharacter="▎"
+      textColors={['#000000']}
+      loop={true}
+    /></a>}
       items={items}
-      baseColor="#fff"
-      menuColor="#000"
-      buttonBgColor="#111"
-      buttonTextColor="#fff"
-      ease="power3.out"
+      menuAriaLabel="Toggle navigation"
+      menuBg="#ffffff"
+      menuContentColor="#111111"
+      useFixedPosition={true}
+      animationEase="back.out(1.5)"
+      animationDuration={0.5}
+      staggerDelay={0.12}
     />
   );
 };

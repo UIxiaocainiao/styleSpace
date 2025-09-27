@@ -89,7 +89,19 @@ export default function LiquidEther({
     function makePaletteTexture(stops: string[]): THREE.DataTexture {
       let arr: string[];
       if (Array.isArray(stops) && stops.length > 0) {
-        arr = stops.length === 1 ? [stops[0], stops[0]] : stops;
+        const validStops = stops.filter((stop): stop is string => typeof stop === 'string');
+        if (validStops.length === 0) {
+          arr = ['#ffffff', '#ffffff'];
+        } else if (validStops.length === 1) {
+          const firstStop = validStops[0];
+          if (firstStop) {
+            arr = [firstStop, firstStop];
+          } else {
+            arr = ['#ffffff', '#ffffff'];
+          }
+        } else {
+          arr = validStops;
+        }
       } else {
         arr = ['#ffffff', '#ffffff'];
       }
@@ -242,16 +254,16 @@ export default function LiquidEther({
       onDocumentTouchStart(event: TouchEvent) {
         if (event.touches.length === 1) {
           const t = event.touches[0];
-          if (this.onInteract) this.onInteract();
-          this.setCoords(t.pageX, t.pageY);
+          if (t && this.onInteract) this.onInteract();
+          if (t) this.setCoords(t.pageX, t.pageY);
           this.hasUserControl = true;
         }
       }
       onDocumentTouchMove(event: TouchEvent) {
         if (event.touches.length === 1) {
           const t = event.touches[0];
-          if (this.onInteract) this.onInteract();
-          this.setCoords(t.pageX, t.pageY);
+          if (t && this.onInteract) this.onInteract();
+          if (t) this.setCoords(t.pageX, t.pageY);
         }
       }
       onTouchEnd() {
@@ -606,9 +618,9 @@ export default function LiquidEther({
       update(...args: any[]) {
         const { dt, isBounce, BFECC } = (args[0] || {}) as { dt?: number; isBounce?: boolean; BFECC?: boolean };
         if (!this.uniforms) return;
-        if (typeof dt === 'number') this.uniforms.dt.value = dt;
-        if (typeof isBounce === 'boolean') this.line.visible = isBounce;
-        if (typeof BFECC === 'boolean') this.uniforms.isBFECC.value = BFECC;
+        if (typeof dt === 'number' && this.uniforms?.dt) this.uniforms.dt.value = dt;
+        if (typeof isBounce === 'boolean' && this.line) this.line.visible = isBounce;
+        if (typeof BFECC === 'boolean' && this.uniforms?.isBFECC) this.uniforms.isBFECC.value = BFECC;
         super.update();
       }
     }
@@ -654,9 +666,9 @@ export default function LiquidEther({
           1 - cursorSizeY - cellScale.y * 2
         );
         const uniforms = (this.mouse.material as THREE.RawShaderMaterial).uniforms;
-        uniforms.force.value.set(forceX, forceY);
-        uniforms.center.value.set(centerX, centerY);
-        uniforms.scale.value.set(cursorSize, cursorSize);
+        if (uniforms.force) uniforms.force.value.set(forceX, forceY);
+        if (uniforms.center) uniforms.center.value.set(centerX, centerY);
+        if (uniforms.scale) uniforms.scale.value.set(cursorSize, cursorSize);
         super.update();
       }
     }
@@ -686,7 +698,7 @@ export default function LiquidEther({
         const { viscous, iterations, dt } = (args[0] || {}) as { viscous?: number; iterations?: number; dt?: number };
         if (!this.uniforms) return;
         let fbo_in: any, fbo_out: any;
-        if (typeof viscous === 'number') this.uniforms.v.value = viscous;
+        if (typeof viscous === 'number' && this.uniforms.v) this.uniforms.v.value = viscous;
         const iter = iterations ?? 0;
         for (let i = 0; i < iter; i++) {
           if (i % 2 === 0) {
@@ -696,9 +708,9 @@ export default function LiquidEther({
             fbo_in = this.props.output1;
             fbo_out = this.props.output0;
           }
-          this.uniforms.velocity_new.value = fbo_in.texture;
+          if (this.uniforms.velocity_new) this.uniforms.velocity_new.value = fbo_in.texture;
           this.props.output = fbo_out;
-          if (typeof dt === 'number') this.uniforms.dt.value = dt;
+          if (typeof dt === 'number' && this.uniforms.dt) this.uniforms.dt.value = dt;
           super.update();
         }
         return fbo_out;
@@ -724,7 +736,7 @@ export default function LiquidEther({
       }
       update(...args: any[]) {
         const { vel } = (args[0] || {}) as { vel?: any };
-        if (this.uniforms && vel) {
+        if (this.uniforms && vel && this.uniforms.velocity) {
           this.uniforms.velocity.value = vel.texture;
         }
         super.update();
@@ -762,7 +774,7 @@ export default function LiquidEther({
             p_in = this.props.output1;
             p_out = this.props.output0;
           }
-          if (this.uniforms) this.uniforms.pressure.value = p_in.texture;
+          if (this.uniforms && this.uniforms.pressure) this.uniforms.pressure.value = p_in.texture;
           this.props.output = p_out;
           super.update();
         }
@@ -790,7 +802,7 @@ export default function LiquidEther({
       }
       update(...args: any[]) {
         const { vel, pressure } = (args[0] || {}) as { vel?: any; pressure?: any };
-        if (this.uniforms && vel && pressure) {
+        if (this.uniforms && vel && pressure && this.uniforms.velocity && this.uniforms.pressure) {
           this.uniforms.velocity.value = vel.texture;
           this.uniforms.pressure.value = pressure.texture;
         }
@@ -1103,7 +1115,7 @@ export default function LiquidEther({
     const io = new IntersectionObserver(
       entries => {
         const entry = entries[0];
-        const isVisible = entry.isIntersecting && entry.intersectionRatio > 0;
+        const isVisible = Boolean(entry && entry.isIntersecting && entry.intersectionRatio > 0);
         isVisibleRef.current = isVisible;
         if (!webglRef.current) return;
         if (isVisible && !document.hidden) {
