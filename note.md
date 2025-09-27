@@ -27,6 +27,3 @@ git add . # 将当前目录下的所有文件都使用 git 进行追踪
 git commit -m "change somethings" # 在 git 版本管理中添加关于本次修改的信息
 git push origin main # 推送到远端git仓库的 main 分支
 ```
-
-
-123
