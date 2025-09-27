@@ -81,13 +81,13 @@ export default function Home() {
             raysOrigin="left"
             raysColor="#9073f7"
             raysSpeed={1.5}
-            lightSpread={3}
-            rayLength={2}
+            lightSpread={1.5}
+            rayLength={1.5}
             followMouse={true}
             mouseInfluence={0.1}
             noiseAmount={0.1}
             distortion={0.05}
-            className="custom-rays"
+            className="custom-rays hidden md:block"
           />
         </div>
         <div className="absolute inset-0 w-full h-full pointer-events-auto">
@@ -96,32 +96,95 @@ export default function Home() {
             raysOrigin="right"
             raysColor="#9073f7"
             raysSpeed={1.5}
-            lightSpread={3}
-            rayLength={2}
+            lightSpread={1.5}
+            rayLength={1.5}
             followMouse={true}
             mouseInfluence={0.1}
             noiseAmount={0.1}
             distortion={0.05}
-            className="custom-rays"
+            className="custom-rays hidden md:block"
           />
         </div>
 
+        {/* 移动端上下动画效果 */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-auto md:hidden">
+          <LiquidEther
+            colors={['#0066FF', '#00BFFF', '#1E90FF', '#40A0FF']}
+            mouseForce={20}
+            cursorSize={100}
+            isViscous={false}
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5}
+            isBounce={false}
+            autoDemo={true}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+          />
+        </div>
+
+
         {/* React Bits 文字前景层 */}
         <div className="relative z-10">
-          <SplitText
-            text="Hello, My Friends!"
-            className="text-[clamp(2rem,10vw,8rem)] font-bold text-center"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
+          {/* 桌面端显示 */}
+          <div className="hidden md:block">
+            <SplitText
+              text="Hello, My Friends!"
+              className="text-[clamp(2rem,10vw,8rem)] font-bold text-center"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+              onLetterAnimationComplete={handleAnimationComplete}
+            />
+          </div>
+          
+          {/* 移动端显示 */}
+          <div className="block md:hidden">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-full">
+                <SplitText
+                  text="Hello"
+                  className="text-[clamp(2rem,10vw,6rem)] font-bold w-full"
+                  delay={100}
+                  duration={0.6}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="center"
+                  onLetterAnimationComplete={handleAnimationComplete}
+                />
+              </div>
+              <div className="w-full mt-2">
+                <SplitText
+                  text="My Friends!"
+                  className="text-[clamp(2rem,10vw,6rem)] font-bold w-full"
+                  delay={100}
+                  duration={0.6}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="center"
+                  onLetterAnimationComplete={handleAnimationComplete}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {/* LogoLoop 区域 */}
