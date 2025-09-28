@@ -499,7 +499,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement | null>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative"
+    className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative mx-auto"
     style={{ 
       fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)',
       transformStyle: 'preserve-3d',
@@ -544,7 +544,7 @@ const MagicBento: React.FC<BentoProps> = ({
   const shouldDisableAnimations = disableAnimations || isMobile;
 
   return (
-    <>
+    <div className="w-full flex justify-center">
       <style>
         {`
           .bento-section {
@@ -860,7 +860,7 @@ const MagicBento: React.FC<BentoProps> = ({
           })}
         </div>
       </BentoCardGrid>
-    </>
+    </div>
   );
 };
 
