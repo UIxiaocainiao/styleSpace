@@ -26,42 +26,42 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '64, 160, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Analytics',
     description: 'Track user behavior',
     label: 'Insights'
   },
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Dashboard',
     description: 'Centralized data view',
     label: 'Overview'
   },
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Collaboration',
     description: 'Work together seamlessly',
     label: 'Teamwork'
   },
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Automation',
     description: 'Streamline workflows',
     label: 'Efficiency'
   },
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Integration',
     description: 'Connect favorite tools',
     label: 'Connectivity'
   },
   {
-    color: '#060010',
+    color: '#0f1419',
     title: 'Security',
     description: 'Enterprise-grade protection',
     label: 'Protection'
@@ -499,9 +499,9 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative mx-auto"
+    className="bento-section grid gap-2 p-3 max-w-[70rem] select-none relative mx-auto"
     style={{ 
-      fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)',
+      fontSize: 'clamp(1.2rem, 1rem + 0.8vw, 2rem)',
       transformStyle: 'preserve-3d',
       perspective: '1000px'
     }}
@@ -553,12 +553,19 @@ const MagicBento: React.FC<BentoProps> = ({
             --glow-intensity: 0;
             --glow-radius: 200px;
             --glow-color: ${glowColor};
-            --border-color: #392e4e;
-            --background-dark: #060010;
+            --border-color: #1e3a8a;
+            --background-dark: #0a0e27;
+            --background-card: #0f1419;
+            --background-hover: #1a1f2e;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
             --white: hsl(0, 0%, 100%);
-            --purple-primary: rgba(132, 0, 255, 1);
-            --purple-glow: rgba(132, 0, 255, 0.2);
-            --purple-border: rgba(132, 0, 255, 0.8);
+            --blue-primary: rgba(64, 160, 255, 1);
+            --blue-glow: rgba(64, 160, 255, 0.15);
+            --blue-border: rgba(64, 160, 255, 0.6);
+            --blue-accent: rgba(64, 160, 255, 0.8);
+            --blue-dark: rgba(30, 64, 175, 0.3);
           }
           
           .card-responsive {
@@ -619,7 +626,7 @@ const MagicBento: React.FC<BentoProps> = ({
           }
           
           .card--border-glow:hover {
-            box-shadow: 0 4px 20px rgba(46, 24, 78, 0.4), 0 0 30px rgba(${glowColor}, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3), 0 0 30px rgba(${glowColor}, 0.2);
           }
           
           .particle::before {

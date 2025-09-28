@@ -51,9 +51,9 @@ export default function Home() {
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center">
         {/* GradientBlinds 全屏背景 */}
         <div className="absolute inset-0 w-full h-full pointer-events-auto">
-          {/* <LiquidEther
-            colors={['#00AAFF', '#00D4FF', '#40A0FF', '#80C0FF']}
-            mouseForce={10}
+          <LiquidEther
+            colors={['#0066FF', '#00BFFF', '#1E90FF', '#40A0FF']}
+            mouseForce={20}
             cursorSize={100}
             isViscous={false}
             viscous={30}
@@ -65,47 +65,11 @@ export default function Home() {
             autoSpeed={0.5}
             autoIntensity={2.2}
             takeoverDuration={0.25}
-            autoResumeDelay={1000}
+            autoResumeDelay={3000}
             autoRampDuration={0.6}
-          /> */}
-          {/* <RippleGrid
-             enableRainbow={false}
-             gridColor="#815519"
-             rippleIntensity={0.05}
-             gridSize={18}
-             gridThickness={15}
-             mouseInteraction={true}
-             mouseInteractionRadius={1.2}
-             opacity={0.8}
-           /> */}
-          <LightRays
-            raysOrigin="left"
-            raysColor="#9073f7"
-            raysSpeed={1.5}
-            lightSpread={1.5}
-            rayLength={1.5}
-            followMouse={true}
-            mouseInfluence={0.1}
-            noiseAmount={0.1}
-            distortion={0.05}
-            className="custom-rays hidden md:block"
           />
         </div>
-        <div className="absolute inset-0 w-full h-full pointer-events-auto">
 
-          <LightRays
-            raysOrigin="right"
-            raysColor="#9073f7"
-            raysSpeed={1.5}
-            lightSpread={1.5}
-            rayLength={1.5}
-            followMouse={true}
-            mouseInfluence={0.1}
-            noiseAmount={0.1}
-            distortion={0.05}
-            className="custom-rays hidden md:block"
-          />
-        </div>
 
         {/* 移动端上下动画效果 */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-auto md:hidden">
@@ -209,10 +173,10 @@ export default function Home() {
 
       {/* 新增功能展示区域 - 全屏居中显示 */}
       <div className="relative flex items-center justify-center min-h-screen w-full">
-        <div className="w-full max-w-7xl mx-auto px-4">
+        <div className="w-full max-w-8xl mx-auto px-4">
           <MagicBento
             textAutoHide={true}
-            enableStars={false}
+            enableStars={true}
             enableSpotlight={true}
             enableBorderGlow={true}
             enableTilt={true}
@@ -220,7 +184,7 @@ export default function Home() {
             clickEffect={true}
             spotlightRadius={300}
             particleCount={12}
-            glowColor="132, 0, 255"
+            glowColor="64, 160, 255"
           />
         </div>
       </div>
