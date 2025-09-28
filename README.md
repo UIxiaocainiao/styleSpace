@@ -12,6 +12,78 @@
 - Framer Motion（动效基础，兼容 ReactBits 示例）
 - shadcn/ui（设计令牌与组件范式）
 
+## 开发环境配置
+
+### Git 自动补全工具
+
+本项目已配置 Git 自动补全功能，提高开发效率。
+
+#### 已安装的功能
+
+1. **Git 自动补全脚本**：
+   - `~/.git-completion.zsh` - Zsh 版本的 Git 自动补全
+   - `~/.git-completion.bash` - Bash 版本的 Git 自动补全
+
+2. **配置的别名**：
+   ```bash
+   g   = git
+   ga  = git add
+   gaa = git add --all
+   gb  = git branch
+   gc  = git commit
+   gcm = git commit -m
+   gco = git checkout
+   gd  = git diff
+   gl  = git log --oneline
+   gp  = git push
+   gpl = git pull
+   gs  = git status
+   gst = git stash
+   ```
+
+3. **增强的提示符**：
+   - 显示当前 Git 分支信息
+   - 显示用户名、主机名和路径
+
+#### 使用方法
+
+**自动补全功能**：
+- 输入 `git ` 然后按 `Tab` 键，会显示所有可用的 Git 命令
+- 输入 `git add ` 然后按 `Tab` 键，会显示可添加的文件
+- 输入 `git checkout ` 然后按 `Tab` 键，会显示可切换的分支
+
+**快捷别名**：
+- 使用 `gs` 代替 `git status`
+- 使用 `ga .` 代替 `git add .`
+- 使用 `gcm "message"` 代替 `git commit -m "message"`
+
+#### 重新加载配置
+
+要立即使用新配置，请运行：
+```bash
+source ~/.zshrc
+```
+
+或者重新打开终端窗口。
+
+### 网页 Favicon 配置
+
+项目已配置自定义 Favicon，在浏览器 Tab 栏显示项目 Logo。
+
+#### Favicon 特点
+
+- **格式**: SVG（矢量，支持任意缩放）
+- **设计**: 渐变圆形背景，白色 "S" 字母
+- **颜色**: 蓝-紫-粉渐变（#3b82f6 → #8b5cf6 → #ec4899）
+- **尺寸**: 32x32 像素
+- **位置**: `/public/favicon.svg`
+
+#### 兼容性
+
+- ✅ 现代浏览器（Chrome, Firefox, Safari, Edge）
+- ✅ 移动设备（iOS Safari, Android Chrome）
+- ✅ 高分辨率显示器
+
 ## 目录结构
 
 - `src/components/Navbar.tsx` 顶部导航，高度 72px，PC/移动自适应
