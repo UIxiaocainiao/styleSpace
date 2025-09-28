@@ -342,7 +342,14 @@ const ParticleCard: React.FC<{
     <div
       ref={cardRef}
       className={`${className} relative overflow-hidden`}
-      style={{ ...style, position: 'relative', overflow: 'hidden' }}
+      style={{ 
+        ...style, 
+        position: 'relative', 
+        overflow: 'hidden',
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
+        transform: 'translateZ(0)'
+      }}
     >
       {children}
     </div>
@@ -493,7 +500,11 @@ const BentoCardGrid: React.FC<{
 }> = ({ children, gridRef }) => (
   <div
     className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative"
-    style={{ fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)' }}
+    style={{ 
+      fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)',
+      transformStyle: 'preserve-3d',
+      perspective: '1000px'
+    }}
     ref={gridRef}
   >
     {children}
