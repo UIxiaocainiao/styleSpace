@@ -534,14 +534,14 @@ const MagicBento: React.FC<BentoProps> = ({
   disableAnimations = false,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   particleCount = DEFAULT_PARTICLE_COUNT,
-  enableTilt = false,
+  enableTilt = true,
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true
 }) => {
   const gridRef = useRef<HTMLDivElement>(null!);
   const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const shouldDisableAnimations = disableAnimations;
 
   return (
     <div className="w-full flex justify-center">
