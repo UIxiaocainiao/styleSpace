@@ -25,11 +25,29 @@
    - `~/.git-completion.bash` - Bash 版本的 Git 自动补全
 
 2. **Zsh 增强补全**：
-   - `~/.zsh-autosuggestions.zsh` - 基于历史命令的自动建议
-   - `~/.zsh-syntax-highlighting.zsh` - 命令语法高亮
+   - `zsh-autosuggestions` - 基于历史命令的自动建议（灰色提示）
+   - `zsh-syntax-highlighting` - 命令语法高亮（正确命令绿色，错误红色）
    - 文件类型智能补全
    - 目录名和分支名补全
    - 进程名补全
+
+#### 安装方法
+
+**前提条件**：已安装 Oh My Zsh
+
+```bash
+# 安装 zsh-autosuggestions 插件
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# 安装 zsh-syntax-highlighting 插件
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# 编辑 ~/.zshrc 文件，添加插件
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+# 重新加载配置
+source ~/.zshrc
+```
 
 3. **配置的别名**：
    ```bash
