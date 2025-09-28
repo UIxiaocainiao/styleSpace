@@ -13,6 +13,7 @@ import LogoLoop from '@/components/LogoLoop'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import RippleGrid from '@/components/RippleGrid';
 import LightRays from '@/components/LightRays';
+import MagicBento from '@/components/MagicBento'
 
 
 
@@ -147,7 +148,7 @@ export default function Home() {
               onLetterAnimationComplete={handleAnimationComplete}
             />
           </div>
-          
+
           {/* 移动端显示 */}
           <div className="block md:hidden">
             <div className="flex flex-col items-center text-center">
@@ -194,7 +195,7 @@ export default function Home() {
             logos={techLogos}
             speed={120}
             direction="left"
-            logoHeight={48}
+            logoHeight={72}
             gap={40}
             pauseOnHover
             scaleOnHover
@@ -206,89 +207,21 @@ export default function Home() {
       </div>
 
 
-      {/* 新增功能展示区域 */}
-      <div className="relative py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* 标题区域 */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <GradientText
-                className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-              >
-                创意无限
-              </GradientText>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              探索最新的动画技术和交互体验，打造令人印象深刻的用户界面
-            </p>
-          </motion.div>
-
-          {/* 功能卡片网格 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "流畅动画",
-                description: "基于 Framer Motion 的流畅动画效果",
-                icon: "🎨",
-                color: "from-blue-500 to-cyan-500"
-              },
-              {
-                title: "响应式设计",
-                description: "完美适配各种设备和屏幕尺寸",
-                icon: "📱",
-                color: "from-purple-500 to-pink-500"
-              },
-              {
-                title: "现代UI",
-                description: "采用最新的设计趋势和交互模式",
-                icon: "✨",
-                color: "from-green-500 to-emerald-500"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl bg-white/[0.03] border border-white/10 p-8 hover:bg-white/[0.05] transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">{item.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-                </div>
-
-                {/* 悬停效果背景 */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* 交互按钮区域 */}
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <MagneticButton>
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-medium rounded-full transition-all duration-300 hover:scale-105"
-              >
-                开始探索
-              </Button>
-            </MagneticButton>
-          </motion.div>
+      {/* 新增功能展示区域 - 全屏居中显示 */}
+      <div className="relative flex items-center justify-center min-h-screen w-full">
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <MagicBento
+            textAutoHide={true}
+            enableStars={false}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            particleCount={12}
+            glowColor="132, 0, 255"
+          />
         </div>
       </div>
     </section>
