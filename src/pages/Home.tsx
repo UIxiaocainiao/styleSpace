@@ -3,6 +3,7 @@ import LiquidEther from '@/components/LiquidEther'
 import LogoLoop from '@/components/LogoLoop'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si'
 import MagicBento from '@/components/MagicBento'
+import SplashCursor from '@/components/SplashCursor'
 
 const handleAnimationComplete = () => {
   // Animation completed
@@ -24,7 +25,7 @@ export default function Home() {
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center">
         {/* GradientBlinds 全屏背景 */}
         <div className="absolute inset-0 w-full h-full pointer-events-auto">
-          <LiquidEther
+          {/* <LiquidEther
             colors={['#0066FF', '#00BFFF', '#1E90FF', '#40A0FF']}
             mouseForce={20}
             cursorSize={100}
@@ -40,7 +41,8 @@ export default function Home() {
             takeoverDuration={0.25}
             autoResumeDelay={3000}
             autoRampDuration={0.6}
-          />
+          /> */}
+          <SplashCursor />
         </div>
 
 
