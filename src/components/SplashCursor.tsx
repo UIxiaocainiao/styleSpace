@@ -1130,10 +1130,12 @@ export default function SplashCursor({
     }
 
     function generateColor(): ColorRGB {
-      const c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
+      // 生成蓝色到紫色的色相范围 (0.5-0.8)
+      const hue = 0.5 + Math.random() * 0.3; // 蓝色(0.5) 到 紫色(0.8)
+      const c = HSVtoRGB(hue, 0.8 + Math.random() * 0.2, 0.9 + Math.random() * 0.1);
+      c.r *= 0.2;
+      c.g *= 0.2;
+      c.b *= 0.2;
       return c;
     }
 
@@ -1296,7 +1298,7 @@ export default function SplashCursor({
   return (
     <div
       style={{
-        position: 'fixed',
+        position: 'absolute',
         top: 0,
         left: 0,
         zIndex: 50,
@@ -1309,8 +1311,8 @@ export default function SplashCursor({
         ref={canvasRef}
         id="fluid"
         style={{
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           display: 'block'
         }}
       />

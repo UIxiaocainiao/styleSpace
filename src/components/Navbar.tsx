@@ -137,7 +137,8 @@ const Navbar = () => {
       cursorCharacter="▎"
       textColors={['#000000']}
       loop={true}
-    /></a>}
+    />
+    </a>}
       items={items}
       menuAriaLabel="Toggle navigation"
       menuBg="#ffffff"
