@@ -1,34 +1,13 @@
-import { motion } from 'framer-motion'
-import MagneticButton from '../components/animations/MagneticButton'
-import Marquee from '../components/animations/Marquee'
-import BlurText from '@/components/animations/BlurText'
-import GradientText from '@/components/GradientText'
-import GlitchText from '@/components/GlitchText'
-import { Button } from '@/components/ui/button'
-import FlowingMenu from '@/components/FlowingMenu'
-import GradientBlinds from '@/components/GradientBlinds'
 import SplitText from '@/components/SplitText'
 import LiquidEther from '@/components/LiquidEther'
 import LogoLoop from '@/components/LogoLoop'
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
-import RippleGrid from '@/components/RippleGrid';
-import LightRays from '@/components/LightRays';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si'
 import MagicBento from '@/components/MagicBento'
 
-
-
-
-
 const handleAnimationComplete = () => {
-  console.log('All letters have animated!');
+  // Animation completed
 };
 
-const demoItems = [
-  { link: '/', text: '首页', image: 'https://picsum.photos/600/400?random=1' },
-  { link: '/photography', text: '摄影', image: 'https://picsum.photos/600/400?random=2' },
-  { link: '/blur-text', text: '文字模糊', image: 'https://picsum.photos/600/400?random=3' },
-  { link: '/about', text: '关于', image: 'https://picsum.photos/600/400?random=4' }
-];
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
@@ -36,12 +15,6 @@ const techLogos = [
   { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
 ];
 
-// Alternative with image sources
-const imageLogos = [
-  { src: "/logos/company1.png", alt: "Company 1", href: "https://company1.com" },
-  { src: "/logos/company2.png", alt: "Company 2", href: "https://company2.com" },
-  { src: "/logos/company3.png", alt: "Company 3", href: "https://company3.com" },
-];
 
 export default function Home() {
   return (
@@ -184,7 +157,7 @@ export default function Home() {
             clickEffect={true}
             spotlightRadius={300}
             particleCount={12}
-            glowColor="64, 160, 255"
+            glowColor="132, 0, 255"
           />
         </div>
       </div>
@@ -193,10 +166,3 @@ export default function Home() {
   )
 }
 
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="mx-4 inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-base text-neutral-300">
-      {children}
-    </span>
-  )
-}
