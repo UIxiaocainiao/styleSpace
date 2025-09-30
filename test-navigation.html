@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-link:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧭 导航功能测试</h1>
+    
+    <div class="test-section">
+        <h2>当前路由配置</h2>
+        <div class="info">
+            <p><strong>根路径 "/"</strong> → 重定向到 "/loading" → 跳转到 "/home"</p>
+            <p><strong>Home 链接</strong> → 直接跳转到 "/home"</p>
+            <p><strong>Photography 链接</strong> → 跳转到 "/photography"</p>
+            <p><strong>About 链接</strong> → 跳转到 "/about"</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>测试链接</h2>
+        <p>点击以下链接测试导航功能：</p>
+        
+        <a href="http://localhost:5174/" class="nav-link">根路径 (/) - 应该显示 Loading 然后跳转到 Home</a>
+        <a href="http://localhost:5174/home" class="nav-link">Home 页面 (/home) - 直接显示 Home</a>
+        <a href="http://localhost:5174/photography" class="nav-link">Photography 页面 (/photography)</a>
+        <a href="http://localhost:5174/about" class="nav-link">About 页面 (/about)</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>修复说明</h2>
+        <div class="success">
+            <p>✅ <strong>已修复的问题：</strong></p>
+            <ul>
+                <li>Navbar 中的 Home 链接从 "/" 改为 "/home"</li>
+                <li>Logo 链接从 "/" 改为 "/home"</li>
+                <li>现在点击 Home 会直接跳转到 home 页面，不会经过 loading 页面</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>预期行为</h2>
+        <div class="info">
+            <p><strong>点击 Home 按钮：</strong> 直接跳转到 home 页面，显示首页内容</p>
+            <p><strong>点击 Logo：</strong> 直接跳转到 home 页面</p>
+            <p><strong>访问根路径：</strong> 显示 loading 页面 5 秒后跳转到 home 页面</p>
+            <p><strong>其他导航：</strong> 正常跳转到对应页面</p>
+        </div>
+    </div>
+</body>
+</html>

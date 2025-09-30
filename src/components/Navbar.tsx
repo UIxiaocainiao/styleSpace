@@ -105,7 +105,7 @@ const Navbar = () => {
   const items = [
     {
       label: "Home",
-      href: "/",
+      href: "/home",
       ariaLabel: "首页",
       rotation: -8,
       hoverStyles: { bgColor: "#141414", textColor: "#ffffff" }
@@ -113,7 +113,7 @@ const Navbar = () => {
     {
       label: "photography",
       href: "/photography",
-      ariaLabel: "Projects",
+      ariaLabel: "摄影作品",
       rotation: 8,
       hoverStyles: { bgColor: "#141414", textColor: "#ffffff" }
     },
@@ -128,7 +128,7 @@ const Navbar = () => {
 
   return (
     <BubbleMenu
-      logo={<a href="/" style={{ fontWeight: 700, color: '#000000' }}>
+      logo={<a href="/home" style={{ fontWeight: 700, color: '#000000' }}>
       <TextType 
       text={["Mr.peng！", "Welcome!", "Hello!"]}
       typingSpeed={75}

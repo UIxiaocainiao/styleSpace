@@ -11,6 +11,11 @@ export const getLogoPath = (category: string, name: string): string => {
   return `/src/assets/logos/${category}/${name}.svg`;
 };
 
+// 根据主题获取logo
+export const getThemeLogo = (theme: 'light' | 'dark' = 'dark'): string => {
+  return theme === 'light' ? logoPaths.main.logoBlack : logoPaths.main.logoWhite;
+};
+
 // 预定义的 logo 路径
 export const logoPaths = {
   social: {

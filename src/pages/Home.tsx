@@ -2,8 +2,10 @@ import SplitText from '@/components/SplitText'
 import LiquidEther from '@/components/LiquidEther'
 import LogoLoop from '@/components/LogoLoop'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si'
+import { FaCode, FaPalette, FaRocket } from 'react-icons/fa'
 import MagicBento from '@/components/MagicBento'
 import SplashCursor from '@/components/SplashCursor'
+import CardSwap, { Card } from '@/components/CardSwap'
 
 const handleAnimationComplete = () => {
   // Animation completed
@@ -15,12 +17,18 @@ const techLogos = [
   { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
   { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
 ];
+const demoItems = [
+  { link: '#', text: 'Mojave', image: 'https://picsum.photos/600/400?random=1' },
+  { link: '#', text: 'Sonoma', image: 'https://picsum.photos/600/400?random=2' },
+  { link: '#', text: 'Monterey', image: 'https://picsum.photos/600/400?random=3' },
+  { link: '#', text: 'Sequoia', image: 'https://picsum.photos/600/400?random=4' }
+];
 
 
 export default function Home() {
   return (
-
-    <section className="relative">
+    <>
+      <section className="relative">
       {/* 首屏内容层 */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center" >
         {/* GradientBlinds 全屏背景 */}
@@ -94,20 +102,28 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* LogoLoop 区域 - 固定到浏览器窗口底部 */}
 
-
-
-
-      {/* <div className="relative w-full min-h-screen">
-      </div> */}
-
-
+      <div className="relative flex items-center justify-center w-full py-20 md:py-24">
+        <div className="w-full max-w-6xl px-4">
+          <LogoLoop
+            logos={techLogos}
+            speed={120}
+            direction="left"
+            logoHeight={48}
+            gap={32}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#ffffff"
+            ariaLabel="Technology partners"
+          />
+        </div>
+      </div>
 
       {/* 新增功能展示区域 - 全屏居中显示 */}
-      <div className="relative flex items-center justify-center min-h-screen w-full py-8 md:py-0">
-        <div className="w-full max-w-8xl mx-auto px-2 md:px-4 flex justify-center">
-          <div className="w-full max-w-6xl">
+      <div className="relative flex items-center justify-center w-full py-20 md:py-24">
+        <div className="w-full max-w-7xl px-4 flex justify-center">
+          <div className="w-full max-w-5xl h-[80vh] min-h-[600px]">
             <MagicBento
               textAutoHide={true}
               enableStars={false}
@@ -123,24 +139,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
-       {/* LogoLoop 区域 */}
-         <div className="h-32 md:h-48 relative overflow-hidden bg-gradient-to-t from-black/80 to-transparent">
-           <LogoLoop
-             logos={techLogos}
-             speed={120}
-             direction="left"
-             logoHeight={48}
-             gap={32}
-             pauseOnHover
-             scaleOnHover
-             fadeOut
-             fadeOutColor="#ffffff"
-             ariaLabel="Technology partners"
-           />
-         </div>
+
     </section>
 
+      {/* 特色展示区域 */}
+      <section className="relative">
+      </section>
+    </>
   )
 }
 
